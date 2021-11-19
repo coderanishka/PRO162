@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bowling</title>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>   
+    <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
+    <script src="./js/shooting.js"></script>
+    
+  </head>
+  <body>
+    <a-scene id="scene" background = 'yellow'>
+
+      <!--Assets-->
+      <a-assets>
+        <a-asset-item
+        id = 'pins'
+        src = './models/pin/scene.gltf'>
+        </a-asset-item>
+        <img id="bg" src="./bg.jpg">
+      </a-assets>
+       
+      <!--Camera and Cursor-->
+      <a-sky src = "#bg"></a-sky>
+      <a-entity
+        id="camera"
+        camera
+        position="0 1.6 3"
+        wasd-controls
+        look-controls="pointerLockEnabled: false"        
+      > 
+      <a-entity position = '0 0 3'></a-entity> 
+        <a-cursor></a-cursor>        
+      </a-entity> 
+
+      <!--Ball-->
+      <a-entity ball></a-entity>
+
+      <!--Ground-->
+      <a-plane id="ground" src = './floor.jpg' position="0 -2 0" rotation="-90 0 0" height="200" width="200" static-body visible="true"></a-plane>
+
+      <!--Pins-->
+      <a-entity position = '0 -2 -8' color = 'white'>
+        <a-entity id = 'pin1' dynamic-body position = '0 0 -10' gltf-model = '#pins'></a-entity>
+        <a-entity id = 'pin2' dynamic-body position = '-2 0 -10' gltf-model = '#pins'></a-entity>
+        <a-entity id = 'pin3' dynamic-body position = '2 0 -10' gltf-model = '#pins'></a-entity>
+        <a-entity id = 'pin4' dynamic-body position = '1 0 -8' gltf-model = '#pins'></a-entity>
+        <a-entity id = 'pin5' dynamic-body position = '-1 0 -8' gltf-model = '#pins'></a-entity>
+        <a-entity id = 'pin6' dynamic-body position = '0 0 -6' gltf-model = '#pins'></a-entity>
+      </a-entity>
+
+      <!-- Boundaries -->
+      <a-cylinder position = '-5 -2 -25' height = '50' radius = '0.5' color = 'red' rotation = '90 0 0'></a-cylinder>
+      <a-cylinder position = '5 -2 -25' height = '50' radius = '0.5' color = 'red' rotation = '90 0 0'></a-cylinder>
+    
+    </a-scene>
+  </body>
+</html>
